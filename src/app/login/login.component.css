@@ -8,23 +8,7 @@
     height: 100%;
     text-indent: -9999px;
 }
-/* .banner-nd .col50 {
-    width: 50%;
-    float: left;
-    height: 100%;
-} */
 
-
-/* .banner-nd .col50.txtCol {
-    padding: 4rem 3rem;
-    border-top: 1px solid #dbe2e8;
-    border-bottom: 1px solid #dbe2e8;
-}
-.banner-nd .col50 {
-    width: 50%;
-    float: left;
-    height: 100%;
-} */
 .padding90{
     padding: 90px;
 }
@@ -44,7 +28,7 @@
     /* padding-bottom: 30px; */
 }
 .width200{
-    width:200px;
+    width:201px;
 }
 .padding10{
     padding: 10px

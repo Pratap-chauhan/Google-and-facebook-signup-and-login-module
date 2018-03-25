@@ -1,15 +1,10 @@
 .header{
     position: fixed;
-    top: 75px;
-    width: 100%;
+    top: 0px;
+    padding: 20px;
     z-index: 8000;
     background: #fff;
-    -webkit-box-shadow: 0 1px 20px 0 rgba(46,61,73,.2);
-    box-shadow: 0 1px 20px 0 rgba(46,61,73,.2);
-    -webkit-transform: translateY(-100%);
-    transform: translateY(-100%);
-    -webkit-animation: sticky-slide-down .4s ease .25s forwards;
-    animation: sticky-slide-down .4s ease .25s forwards;
+    animation: sticky-slide-down .6s ease 1s forwards; 
 }
 .header_logo    
 {
@@ -33,4 +28,27 @@ margin-top: 25px;
     border: transparent;
     /* color: white; */
     cursor: pointer;
+}
+@media screen and (max-width: 1300px){
+    .Maincontainer{
+
+        margin-left: 0px !important;
+        margin-right: 0px!important
+
+    }
+}
+.Maincontainer{
+    margin-right: 150px;
+    margin-left:150px;
+}
+.light {
+    font-weight: 100!important;
+    color: #525c65;
+}
+.courseHeader{
+    border-bottom-color: transparent!important;
+    border: 1px solid;
+    border-right-color: grey !important;
+    border-left-color :transparent !important;
+    border-top-color :transparent !important;
 }
