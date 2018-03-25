@@ -1,14 +1,20 @@
-import { Component ,OnInit } from '@angular/core';
+import { Component, OnInit,Output,  EventEmitter,HostListener, Inject,Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { DOCUMENT } from '@angular/platform-browser';
+import { WINDOW_PROVIDERS, WINDOW } from "../../../src/window.service";
 
 
+// @Output() Top = new EventEmitter<boolean>();
+// @Input() top
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
+
 })
-export class AppComponent implements  OnInit {
-  title = 'app';
+export class HomeComponent implements OnInit {
+  showHeader =false;
+  top="0px"
   dummi;
   showCommentIndex=0;
  jsonvalues=[]
@@ -28,7 +34,8 @@ CommentDetails=[
 
   }
 ]
-  constructor(private router : Router){
+  constructor(private router : Router,   @Inject(DOCUMENT) private document: Document,
+  @Inject(WINDOW) private window: Window){
   this.dummi = [{
     "Software Products": [
       {
@@ -90,14 +97,31 @@ console.log(">>>>>>>>.dummi",this.dummi)
   }
   ngOnInit()
   {
+   
    this.showComment=this.CommentDetails[this.showCommentIndex]
     console.log(">>>",this.dummi.length,this.dummi[3])
     for(let i=0;i<this.dummi.length;i++)
 this.getData(this.dummi[i],i)
   }
+  ngOnChange(){
+    // this.Top.emit(this.headTop);
+  }
 
   getData(jsonObject,i){
   }
+
+
+  @HostListener("window:scroll", [])
+  onWindowScroll() {
+    const offset = this.window.pageYOffset || this.document.documentElement.scrollTop || this.document.body.scrollTop || 0;
+    console.log(offset);
+    if(offset>200){
+this.showHeader = true
+    }
+    else
+    this.showHeader=false
+  }
+
 
   next(){
     let CommentDetailslength=this.CommentDetails.length;
@@ -117,12 +141,11 @@ previous(){
   }
 }
 
-moveTologinPage(){
+moveTologinPage() {
  
     this.router.navigateByUrl('/login');
 
 }
-
 
 
 

@@ -1,0 +1,98 @@
+<section class="sectionMargin">
+  <div class="col-md-12 col-sm-12 row">
+    <div class="col-md-6 col-sm6 padding0">
+      <div class="banner-nd ">
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6 padding90">
+      <h3>Put any course to the Udacity test.</h3>
+      <h3>Does it provide the Nanodegree
+        <sup>®</sup>Advantage?</h3>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container " style="text-align:center">
+  <div class="col-md-12 col-sm-12 " style="display:inline-flex" >
+      <div class="col-md-6 col-sm-6" style="cursor: pointer;" (click)="SingInTabShow()">
+        <h6>
+          SIGN IN
+        </h6>
+      </div>
+      <div class="col-md-6 col-sm-6" style="cursor: pointer;" (click)="SignUPTabShow()">
+        <h6>
+          SIGN UP
+        </h6>
+      </div>
+    </div>
+    <div class="col-md-12 col-sm-12" *ngIf="signInTab" >
+      <div class="col-md-12 col-sm-12" style="margin-top:15px;">
+        <h4 class="light">
+          Log Into Your Account
+        </h4>
+      </div>
+      <div class="col-md-12 col-sm-12 paddingtop50" >
+        <input class="form-control padding10" type="email" placeholder="Enter Email">
+      </div>
+      <div class="col-md-12 col-sm-12 paddingtop50">
+        <input class="form-control padding10" type="password" placeholder="Enter Password">
+      </div>
+      <div class=" paddingtop50">
+        <button type="submit" class="btn-primary btn-lg width200" (click)="login()">Login</button>
+      </div>
+
+      <div class="col-md-12 col-sm-12 paddingtop50"  style="padding-bottom: 40px;display:inline-flex;">
+          <div class="col-md-5 col-sm-5 form-control">
+              <img  style="width: 7%;" src="https://in.udacity.com/assets/images/svgs/facebook_logo.svg?v=5fc9e584">
+           <label style="margin-left:30px"> Facebook</label>  
+            </div> 
+        
+            <div class="col-md-5 col-sm-5 form-control" style="margin-left: 160px;" (click)="googleLogin()">
+                <img  style="width: 7%;" src="https://in.udacity.com/assets/images/svgs/google_logo.svg?v=a3221a82">
+             <label style="margin-left:30px"> Google</label>  
+              </div> 
+
+
+    </div>
+  </div>
+
+  <div class="col-md-12 col-sm-12" *ngIf="!signInTab" >
+      <div class="col-md-12 col-sm-12" style="margin-top:15px;">
+        <h4 class="light">
+         Create an Account
+        </h4>
+      </div>
+      <div class="col-md-12 col-sm-12 paddingtop50" style="display:inline-flex">
+        <div class="col-md-6 col-sm-6 row">
+            <input class="form-control padding10" type="text" placeholder="First Name">
+        </div>
+          <div class="col-md-6 col-sm-6 row" style="margin-left: 41px;">
+              <input class="form-control padding10" type="text" placeholder="Last Name">
+          </div>
+        </div>
+      <div class="col-md-12 col-sm-12 paddingtop50" >
+        <input class="form-control padding10" type="email" placeholder="Enter Email">
+      </div>
+      <div class="col-md-12 col-sm-12 paddingtop50" style="display:inline-flex">
+          <div class="col-md-6 col-sm-6 row">
+        <input class="form-control padding10" type="phone" placeholder="Phone no.">
+        </div>
+        <div class="col-md-6 col-sm-6 row" style="margin-left: 41px;">
+            <input class="form-control padding10" type="password" placeholder="Enter Password">
+          </div>
+      </div>
+      <div class=" paddingtop50" style="padding-bottom:50px">
+        <button type="submit" class="btn-primary btn-lg width200" (click)="SignUp()">Create an Account</button>
+      </div>
+
+    
+        
+
+    </div>
+  <!-- </div> -->
+
+
+</div>
+</section>
