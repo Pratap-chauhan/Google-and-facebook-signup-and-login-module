@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { GoogleIntergationService } from '../google-intergation.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Http, HttpModule } from '@angular/http';
+import { ApicallService } from '../apicall.service';
 declare const gapi: any;
 declare const FB: any;
 @Component({
@@ -11,11 +12,18 @@ declare const FB: any;
 })
 export class LoginComponent implements OnInit {
   signInTab = true;
+  loginsucess= false;
+loginfailure=false;
   auth2: any;
   obj: any;
   loginFormpassword: any = '';
   loginFormemail: any = '';
-  constructor(private element: ElementRef, private googleService: GoogleIntergationService, private http: Http) {
+  signUpFirstName:string;
+  signUpLastName:string;
+  signUpEmail:any;
+  signUpPhoneNo:number;
+  signUpPasssword:any;
+  constructor(private element: ElementRef, private googleService: GoogleIntergationService, private http: Http,private callapi : ApicallService) {
 
 
   }
@@ -31,15 +39,23 @@ export class LoginComponent implements OnInit {
         email: data.form.value.email,
         password: data.form.value.password
       }
-      this.http.post('http://localhost:3000/user/signin', this.obj).subscribe((result) => {
-        console.log(">>>>", result)
-      }
-      )
-    }
-    else {
-      console.log("no")
-    }
+      this.callapi.makeApiCall('user/signin', this.obj,4).subscribe((result)=>{
+        console.log("><>>><")
+      this.loginsucess= true;
+        this.loginfailure=false;
+      },
+    (err)=>{
+      console.log("><>>><eeee")
+                this.loginsucess= false;
+this.loginfailure=true
+    },
+    
+    )
   }
+  }
+
+
+
   SignUPTabShow() {
     // console.log(">>>>>>>>>>")
     this.signInTab = false;
@@ -51,8 +67,25 @@ export class LoginComponent implements OnInit {
 
 
   SignUp() {
-
+let obj={
+  name:this.signUpFirstName,
+  lastname:this.signUpLastName,
+  email:this.signUpEmail,
+  phone:this.signUpPhoneNo,
+  password:this.signUpPasssword
+}
+this.callapi.makeApiCall('customer/register',obj,4).subscribe((result)=>{
+  console.log("><>>><")
+  this.loginsucess= true;
+    this.loginfailure=false;
+  },
+(err)=>{
+  console.log("><>>><eeee")
+            this.loginsucess= false;
+this.loginfailure=true
+})
   }
+
 
   googleLogin() {
     console.log(">>>>>>>>>>>>>")

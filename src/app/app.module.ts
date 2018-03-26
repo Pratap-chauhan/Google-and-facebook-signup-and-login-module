@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 import { WINDOW_PROVIDERS, WINDOW } from "../window.service";
 import { FooterComponent } from './footer/footer.component';
 import { GoogleIntergationService } from './google-intergation.service';
+import { ApicallService } from './apicall.service';
 import { HttpClientModule } from '@angular/common/http';
 import {Http, Headers, HttpModule, URLSearchParams} from '@angular/http';
 
@@ -31,7 +32,7 @@ import {Http, Headers, HttpModule, URLSearchParams} from '@angular/http';
     HttpClientModule,
     HttpModule
   ],
-  providers: [ WINDOW_PROVIDERS ,GoogleIntergationService ],
+  providers: [ WINDOW_PROVIDERS ,GoogleIntergationService,ApicallService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

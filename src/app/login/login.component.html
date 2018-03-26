@@ -49,6 +49,13 @@
       <div class=" paddingtop50">
         <button type="submit" class="btn-primary btn-lg width200" (click)="login()">Login</button>
       </div>
+
+      <div  class="col-md-12 col-sm-12" *ngIf="loginsucess">
+        <h3 style="color:green" > SuccessFully Login</h3>
+      </div>
+      <div  class="col-md-12 col-sm-12" *ngIf="loginfailure">
+          <h3 style="color:Red" > Unauthorized</h3>
+        </div>
     </form>
       <div class="col-md-12 col-sm-12 paddingtop50"  style="padding-bottom: 40px;display:inline-flex;">
           <div class="col-md-5 col-sm-5 form-control" (click)="checkLoginState()">
@@ -71,35 +78,40 @@
          Create an Account
         </h4>
       </div>
+      <form (ngSubmit)="SignUp(LoginForm)" #LoginForm="ngForm">
       <div class="col-md-12 col-sm-12 paddingtop50" style="display:inline-flex">
         <div class="col-md-6 col-sm-6 row">
-            <input class="form-control padding10" type="text" placeholder="First Name">
+            <input class="form-control padding10" type="text" name="firstname" [(ngModel)]="signUpFirstName" placeholder="First Name">
         </div>
           <div class="col-md-6 col-sm-6 row" style="margin-left: 41px;">
-              <input class="form-control padding10" type="text" placeholder="Last Name">
+              <input class="form-control padding10" type="text"  name="lastname" [(ngModel)]="signUpLastName" placeholder="Last Name">
           </div>
         </div>
       <div class="col-md-12 col-sm-12 paddingtop50" >
-        <input class="form-control padding10" type="email" placeholder="Enter Email">
+        <input class="form-control padding10" type="email" name="email" [(ngModel)]="signUpEmail" placeholder="Enter Email">
       </div>
       <div class="col-md-12 col-sm-12 paddingtop50" style="display:inline-flex">
           <div class="col-md-6 col-sm-6 row">
-        <input class="form-control padding10" type="phone" placeholder="Phone no.">
+        <input class="form-control padding10" type="phone" name="phone" [(ngModel)]="signUpPhoneNo" placeholder="Phone no.">
         </div>
         <div class="col-md-6 col-sm-6 row" style="margin-left: 41px;">
-            <input class="form-control padding10" type="password" placeholder="Enter Password">
+            <input class="form-control padding10" type="password"  name="password" [(ngModel)]="signUpPasssword" placeholder="Enter Password">
           </div>
       </div>
       <div class=" paddingtop50" style="padding-bottom:50px">
         <button type="submit" class="btn-primary btn-lg width200" (click)="SignUp()">Create an Account</button>
       </div>
-
+    </form>
     
         
 
     </div>
-  <!-- </div> -->
+
 
 
 </div>
 </section>
+
+
+
+
