@@ -9,9 +9,31 @@
 <!-- 894829491932-r1vqtiok0ce5jlnp1bgvknioe7r11aeg.apps.googleusercontent.com
 Client Secret
 h-nZasT_kkTkTaZ2ks0T4-i7 -->
-  <meta name="google-signin-client_id" content="894829491932-r1vqtiok0ce5jlnp1bgvknioe7r11aeg.apps.googleusercontent.com">
+
+  <meta name="google-signin-client_id" content="894829491932-7g08uphnc2dbbqmvu7j4s4vfsdt7vkij.apps.googleusercontent.com">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://apis.google.com/js/platform.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script >
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '209114293180762',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+  </script>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>

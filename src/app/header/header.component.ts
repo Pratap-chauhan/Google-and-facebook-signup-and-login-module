@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, SimpleChange } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +9,12 @@ import { Component, OnInit, Input, SimpleChange } from '@angular/core';
 export class HeaderComponent implements OnInit {
  @Input() headerTop;
  classTop=false;
-  constructor() { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
     console.log(">>>>>",this.headerTop)
   }
-//   Top(event){
-// console.log(">>DFSgx",event)
-//   }
+
 ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
 console.log("jsdhf",changes)
 this.headerTop=changes.headerTop.currentValue;
@@ -25,4 +24,11 @@ if(this.headerTop > 200)
   this.classTop = true;
 }
 }
+
+moveTologinPage() {
+ 
+  this.router.navigateByUrl('/login');
+
+}
+
 }

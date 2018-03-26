@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.light {
+    font-weight: 100!important;
+    color: #525c65;
+}
+.paddingTop50{
+    padding-top:50px
+}

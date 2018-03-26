@@ -8,26 +8,30 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { WINDOW_PROVIDERS, WINDOW } from "../window.service";
-// import { RouterModule, Routes } from '@angular/router';
-// import { ModuleWithProviders } from '@angular/core/src/metadata/ng_module';
+import { FooterComponent } from './footer/footer.component';
+import { GoogleIntergationService } from './google-intergation.service';
+import { HttpClientModule } from '@angular/common/http';
+import {Http, Headers, HttpModule, URLSearchParams} from '@angular/http';
 
 
 
-// export const AppRoutes: Routes = [];
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    ROUTING
+    ROUTING,
+    HttpClientModule,
+    HttpModule
   ],
-  providers: [ WINDOW_PROVIDERS ],
+  providers: [ WINDOW_PROVIDERS ,GoogleIntergationService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

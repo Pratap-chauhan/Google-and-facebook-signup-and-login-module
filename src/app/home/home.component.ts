@@ -35,79 +35,17 @@ CommentDetails=[
   }
 ]
   constructor(private router : Router,   @Inject(DOCUMENT) private document: Document,
-  @Inject(WINDOW) private window: Window){
-  this.dummi = [{
-    "Software Products": [
-      {
-        "Programming Languages": [
-          "Java API",
-          "Python API"
-        ]
-      },
-      {
-        "Documentation": [
-          "Java Docs",
-          "Python Docs",
-          {
-            "HTTP Docs": [
-              "REST Docs",
-              "SOAP Docs"
-            ]
-          }
-        ]
-      },
-      "Try It!"
-    ]
-  },
-  {
-    "Cloud Products": [
-      "SAAS",
-      "PAAS",
-      "IAAS"
-    ]
-  },
-  {
-    "About Us": [
-      {
-        "Locations": [
-          {
-            "India": [
-              "Delhi",
-              {
-                "Mumbai": [
-                  "Lower Parel",
-                  "Goregaon"
-                ]
-              },
-              "Bangalore"
-            ]
-          },
-          "USA",
-          "Singapore"
-        ]
-      },
-      "Founders",
-      "Advisors"
-    ]
-  },
-  "Contact Us"
-]
-console.log(">>>>>>>>.dummi",this.dummi)
+  @Inject(WINDOW) private window: Window){}
 
-  }
+  
   ngOnInit()
   {
    
    this.showComment=this.CommentDetails[this.showCommentIndex]
-    console.log(">>>",this.dummi.length,this.dummi[3])
-    for(let i=0;i<this.dummi.length;i++)
-this.getData(this.dummi[i],i)
-  }
-  ngOnChange(){
-    // this.Top.emit(this.headTop);
   }
 
-  getData(jsonObject,i){
+  ngOnChange(){
+
   }
 
 

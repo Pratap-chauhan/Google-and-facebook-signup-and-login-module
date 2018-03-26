@@ -1,52 +1,68 @@
-import { Component, OnInit } from '@angular/core';
-declare const gapi : any;
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { GoogleIntergationService } from '../google-intergation.service';
+import { HttpClientModule } from '@angular/common/http';
+import { Http, HttpModule } from '@angular/http';
+declare const gapi: any;
+declare const FB: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-signInTab=true;
+  signInTab = true;
+  auth2: any;
+  obj: any;
+  loginFormpassword: any = '';
+  loginFormemail: any = '';
+  constructor(private element: ElementRef, private googleService: GoogleIntergationService, private http: Http) {
 
-  constructor() {
-    console.log(">>>>>>",gapi)
-    gapi.load('auth2', function() {
-    gapi.auth2.init({
-        client_id: "894829491932-r1vqtiok0ce5jlnp1bgvknioe7r11aeg.apps.googleusercontent.com",
-        scope: 'email',
-        cookiepolicy: 'single_host_origin',
-        fetch_basic_profile: false
-    });
-    });
-   }
+
+  }
 
   ngOnInit() {
-  }
-  login(){
+    // console.log(">>>>",FB)
 
   }
-  SignUPTabShow()
-{
-  console.log(">>>>>>>>>>")
-  this.signInTab=false;
-}
-SingInTabShow(){
-  console.log(">>>>>>>>>>")
-  this.signInTab=true;
-}
-SignUp(){
+  login(data) {
+    console.log(data)
+    if (data && data.form.value.email && data.form.value.password) {
+      this.obj = {
+        email: data.form.value.email,
+        password: data.form.value.password
+      }
+      this.http.post('http://localhost:3000/user/signin', this.obj).subscribe((result) => {
+        console.log(">>>>", result)
+      }
+      )
+    }
+    else {
+      console.log("no")
+    }
+  }
+  SignUPTabShow() {
+    // console.log(">>>>>>>>>>")
+    this.signInTab = false;
+  }
+  SingInTabShow() {
+    // console.log(">>>>>>>>>>")
+    this.signInTab = true;
+  }
 
-}
 
-googleLogin() {
-  console.log(">>>>>>>>>>>>>")
-  let googleAuth = gapi.auth2.getAuthInstance();
-  googleAuth.then(() => {
-     googleAuth.signIn({scope: 'profile email'}).then(googleUser => {
-        console.log(googleUser.getBasicProfile());
-     });
-  });
-}
+  SignUp() {
+
+  }
+
+  googleLogin() {
+    console.log(">>>>>>>>>>>>>")
+    this.googleService.googleLogin();
+  }
 
 
+  checkLoginState() {
+    FB.getLoginStatus(function (response) {
+      console.log(">>>>", response)
+    });
+  }
 }

@@ -376,3 +376,51 @@ margin-left:33px;
         margin-left: 72px;
     }
 }
+
+
+.google-play {
+    margin: 3rem 0;
+}
+
+ .google-play {
+    background-image: url(https://in.udacity.com/assets/iridium/images/shared/download-app-banner/google-play.svg);
+    background-position: 50%;
+    display: block;
+    width: 148px;
+    height: 51px;
+  
+}
+.paddingTop50{
+    padding-top:50px
+}
+.cardFormat {
+    background: #fff;
+    -webkit-box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+    box-shadow: 5px 5px 25px 0 rgba(46,61,73,.2);
+    border-radius: .375rem;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+}
+.blue {
+    color: #02b3e4!important;
+}
+
+.green {
+    color: #15c26b!important;
+}
+.contactUs{
+    background: url(https://in.udacity.com/assets/iridium/images/homepage/shared/bg-contact.jpg) 50% no-repeat;
+    background-size: cover;
+    display: inherit;
+}
+.contactUsheading{
+    color: #fff
+}
+.fontSize13{
+    font-size: 13px;
+}
+.bottomlist{
+    padding-top: 10px;
+    font-weight: 100!important;
+
+}
