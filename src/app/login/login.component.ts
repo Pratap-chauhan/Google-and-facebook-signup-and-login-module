@@ -89,12 +89,17 @@ this.loginfailure=true
 
   googleLogin() {
     console.log(">>>>>>>>>>>>>")
-    this.googleService.googleLogin();
+    this.googleService.googleLogin().then((result)=>{
+      if(result.Zi.access_token){
+        console.log("gogle",result)
+        this.loginsucess= true;
+        this.loginfailure=false;
+      }
+  })
   }
 
-
   checkLoginState() {
-    FB.getLoginStatus(function (response) {
+    FB.getLoginStatus( (response)=> {
       console.log(">>>>", response)
     });
   }

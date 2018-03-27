@@ -16,13 +16,6 @@ export class GoogleIntergationService {
    googleLogin() {
     console.log(">>>>>>>>>>>>>")
     let googleAuth = gapi.auth2.getAuthInstance();
-    googleAuth.signIn({scope: 'profile email'}).then(googleUser=>{
-    if(googleUser.Zi.access_token){
-  
-    }
-    else{
-  
-    }
-  })
+ return   googleAuth.signIn({scope: 'profile email'})
   }
 }
