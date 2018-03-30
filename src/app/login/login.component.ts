@@ -1,8 +1,9 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { GoogleIntergationService } from '../google-intergation.service';
+import { GoogleIntergationService } from '../services/google-intergation.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Http, HttpModule } from '@angular/http';
-import { ApicallService } from '../apicall.service';
+import { ApicallService } from '../services/apicall.service';
+import { LoginpermissionsService } from '../services/loginpermissions.service'
 declare const gapi: any;
 declare const FB: any;
 @Component({
@@ -21,12 +22,12 @@ loginfailure=false;
   signUpFirstName:string;
   signUpLastName:string;
   signUpEmail:any;
-  signUpPhoneNo:number;
+  signUpPhoneNo:any;
   signUpPasssword:any;
-  constructor(private element: ElementRef, private googleService: GoogleIntergationService, private http: Http,private callapi : ApicallService) {
-
-
-  }
+  constructor(private element: ElementRef, 
+    private googleService: GoogleIntergationService, 
+    private http: Http,private callapi : ApicallService,
+  private userpermission : LoginpermissionsService) {}
 
   ngOnInit() {
     // console.log(">>>>",FB)
@@ -35,24 +36,29 @@ loginfailure=false;
   login(data) {
     console.log(data)
     if (data && data.form.value.email && data.form.value.password) {
+      let formdata = new FormData()
+    formdata.append('email',data.form.value.email)
+    formdata.append('password',data.form.value.password)
       this.obj = {
         email: data.form.value.email,
         password: data.form.value.password
       }
-      this.callapi.makeApiCall('user/signin', this.obj,4).subscribe((result)=>{
-        console.log("><>>><")
-      this.loginsucess= true;
-        this.loginfailure=false;
-      },
-    (err)=>{
-      console.log("><>>><eeee")
-                this.loginsucess= false;
-this.loginfailure=true
-    },
+      // this.userpermission.getUserPermission('user/signin', formdata,4).subscribe((result)=>{
+      //   console.log("><>>><")
+      // this.loginsucess= true;
+      //   this.loginfailure=false;
+      // },
+      this.userpermission.loginApiResponse.subscribe((result)=>{
+console.log("result",result)
+      })
+//     (err)=>{
+//       console.log("><>>><eeee")
+//                 this.loginsucess= false;
+// this.loginfailure=true
+//     },
     
-    )
   }
-  }
+ }
 
 
 
@@ -71,16 +77,17 @@ let obj={
   name:this.signUpFirstName,
   lastname:this.signUpLastName,
   email:this.signUpEmail,
-  phone:this.signUpPhoneNo,
+  phoneNumber:this.signUpPhoneNo,
   password:this.signUpPasssword
 }
+
 this.callapi.makeApiCall('customer/register',obj,4).subscribe((result)=>{
-  console.log("><>>><")
+  // console.log("><>>><")
   this.loginsucess= true;
     this.loginfailure=false;
   },
 (err)=>{
-  console.log("><>>><eeee")
+  // console.log("><>>><eeee")
             this.loginsucess= false;
 this.loginfailure=true
 })
@@ -88,7 +95,7 @@ this.loginfailure=true
 
 
   googleLogin() {
-    console.log(">>>>>>>>>>>>>")
+    // console.log(">>>>>>>>>>>>>")
     this.googleService.googleLogin().then((result)=>{
       if(result.Zi.access_token){
         console.log("gogle",result)

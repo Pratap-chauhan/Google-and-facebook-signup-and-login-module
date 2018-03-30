@@ -9,10 +9,12 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { WINDOW_PROVIDERS, WINDOW } from "../window.service";
 import { FooterComponent } from './footer/footer.component';
-import { GoogleIntergationService } from './google-intergation.service';
-import { ApicallService } from './apicall.service';
+import { GoogleIntergationService } from './services/google-intergation.service';
+import { ApicallService } from './services/apicall.service';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginpermissionsService } from './services/loginpermissions.service';
 import {Http, Headers, HttpModule, URLSearchParams} from '@angular/http';
+
 
 
 
